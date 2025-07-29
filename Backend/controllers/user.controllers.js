@@ -1,6 +1,9 @@
 const UserModel = require('../models/user.models');
 const UserServices = require('../services/user.services');
 const { validationResult } = require('express-validator');
+const blacklistSchematoken = require('../models/blacklist.models');
+
+
 
 module.exports.registerUser = async (req, res , next) =>{
     
@@ -26,6 +29,7 @@ module.exports.registerUser = async (req, res , next) =>{
         if (error.message.includes('duplicate key error') && error.message.includes('email')) {
             return res.status(409).json({ message: 'Email already registered.' });
         }
+        
         console.error('Error registering user:', error);
         res.status(500).json({ message: 'User registration failed.', error: error.message });
     }
@@ -49,8 +53,24 @@ const errors = validationResult(req);
         return res.status(401).json({message:'Invalid Email and Password'})
     }
     const token = user.generateAuthToken();
-
+    res.cookie('token', token);
     res.status(200).json({token, user})
+
 
 }
 
+module.exports.getUserProfile = async (req, res) =>{
+    res.status(200).json(req.user)
+
+}
+
+module.exports.logoutUser = async (req, res) => {
+
+    res.clearCookie('token');
+    const token = req.cookies.token || req.headers.authorization.split(' ')[1];
+    
+    await blacklistSchematoken.create({ token });
+    res.status(200).json({ message: 'User logged out successfully.' }); 
+
+
+}

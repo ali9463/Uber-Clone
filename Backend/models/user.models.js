@@ -6,13 +6,13 @@ const userSchema = new mongoose.Schema({
   username: { type: String, required: true },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true , select: false},
-  phone: { type: String, required: true },
+  phone: { type: String, required: true, },
   socketId: { type: String, default: null },
 });
 
 
 userSchema.methods.generateAuthToken = function() {
-    const token = jwt.sign({ id: this._id }, process.env.JWT_SECRET); 
+    const token = jwt.sign({ _id: this._id }, process.env.JWT_SECRET, { expiresIn: '24h' }); 
     return token;
 };
 

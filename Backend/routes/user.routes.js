@@ -2,6 +2,10 @@ const express = require('express');
 const router = express.Router();
 const { body } = require('express-validator');
 const userController = require('../controllers/user.controllers');
+const authMiddlewares = require('../middlewares/auth.middlewares')
+
+
+
 
 router.post('/register', [
     body('username').notEmpty().withMessage('Username is required'), // Added username validation
@@ -18,6 +22,8 @@ router.post('/login', [
     userController.loginUser
 );
 
-router.get('/profile', userController.getUserProfile)
+router.get('/profile', authMiddlewares.authUser,   userController.getUserProfile)
+
+router.post('/logout' , authMiddlewares.authUser , userController.logoutUser); 
 
 module.exports = router;
