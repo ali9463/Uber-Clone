@@ -4,11 +4,11 @@ import './index.css'
 import App from './App.jsx'
 import { BrowserRouter } from 'react-router-dom'
 import {UserContext} from './context/UserContext.jsx';
-import CaptainContext from './context/CapatainContext.jsx';
+import {CaptainContext} from './context/CapatainContext.jsx';
 import SocketProvider from './context/SocketContext.jsx';
 
 createRoot(document.getElementById('root')).render(
-  // <CaptainContext>
+  <CaptainContext>
     <UserContext>
       {/* <SocketProvider> */}
         <BrowserRouter>
@@ -16,5 +16,5 @@ createRoot(document.getElementById('root')).render(
         </BrowserRouter>
       {/* </SocketProvider> */}
     </UserContext>
-  // </CaptainContext>
+   </CaptainContext>
 )
