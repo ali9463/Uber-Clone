@@ -9,17 +9,16 @@ module.exports.registerUser = async (req, res , next) =>{
     
     const errors = validationResult(req); 
     if(!errors.isEmpty()){ 
-        return res.status(400).json({errors: errors.array()}) 
+        return res.status(400).json(`RegisterUser Error: ${errors.array()}`) 
     }
 
-    const { username, email , phone, password } = req.body; 
+    const { username, email , password } = req.body; 
     
     try {
         const user = await UserServices.createUser({ 
             username,
             email,
             password,
-            phone
         });
         
         const token = user.generateAuthToken();
