@@ -4,7 +4,6 @@ const bcrypt = require('bcrypt');
 const crypto = require('crypto');
 
 async function getFare(pickup, destination) {
-
     if (!pickup || !destination) {
         throw new Error('Pickup and destination are required');
     }
@@ -45,12 +44,10 @@ async function getFare(pickup, destination) {
 module.exports.getFare = getFare;
 
 
-function getOtp(num) {
-    function generateOtp(num) {
-        const otp = crypto.randomInt(Math.pow(10, num - 1), Math.pow(10, num)).toString();
-        return otp;
-    }
-    return generateOtp(num);
+function getOtp(length) {
+  return crypto
+    .randomInt(10 ** (length - 1), 10 ** length)
+    .toString();
 }
 
 

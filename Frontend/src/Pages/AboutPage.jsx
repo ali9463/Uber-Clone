@@ -11,24 +11,24 @@ const AboutPage = () => {
   return (
     <div className=" min-h-screen py-16 bg-gradient-to-tr from-black to-green-900">
       <header className="text-start mb-12 ml-12">
-        <h1 className="text-6xl font-extrabold text-white mb-2 ">Expert Detailing</h1>
-        <h2 className="text-7xl text-green-500">Tailored to your Needs</h2>
+        <h1 className="text-6xl font-extrabold text-white mb-2 ">Drive when you want</h1>
+        <h2 className="text-7xl text-green-500">Make what you need</h2>
       </header>
       <div className="flex flex-wrap justify-center">
         <Card
-          imageSrc= {Carimg1}
-          title="Interior Detailing"
-          description="A complete interior cleaning service, including vacuuming, upholstery cleaning, and dashboard polishing."
+          imageSrc= {"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRwfVQmT45Ibh1gSoaKJm4_nUiQth0IbQ_Qg&s"}
+          title="Car Drivers"
+          description="A smooth and comfortable ride, with clean interiors, fresh seats, and a spotless dashboard — every ride feels refreshing and relaxing."
         />
         <Card
-          imageSrc={Carimg2}
-          title="Exterior Detailing"
-          description="Full exterior wash, wax, and tire shine to make your car look brand new."
+          imageSrc={"https://media.istockphoto.com/id/1414019690/photo/auto-rickshaw-bajaj-tuktuk-3d-rendering-on-white-background.jpg?s=612x612&w=0&k=20&c=qm75sswRZHLLJeGe0G1WZsioNToC1rhiJpBpTXBAVm8="}
+          title="Auto Drivers"
+          description="Neat and well-maintained autos for your everyday ride. Clean seats, dust-free handles, and a pleasant ride environment"
         />
         <Card
-          imageSrc={Carimg3}
-          title="Ceramic Coating"
-          description="Long-lasting protection for your car's paint, providing a high-gloss finish and superior durability."
+          imageSrc={"https://thumbs.dreamstime.com/b/cartoon-motorcycle-brown-seat-white-frame-327999856.jpg"}
+          title="MotorCycle Drivers"
+          description="Hygienic helmets, clean seating, and careful driving — making every two-wheeler ride safe and fresh."
         />
       </div>
     </div>

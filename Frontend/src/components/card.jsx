@@ -1,5 +1,6 @@
 // Card.js
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Card = ({ imageSrc, title, description }) => {
   return (
@@ -7,9 +8,9 @@ const Card = ({ imageSrc, title, description }) => {
       <img src={imageSrc} alt={title} className="w-full h-[200px] rounded-md mb-4" />
       <h3 className="text-2xl font-semibold text-white mb-2">{title}</h3>
       <p className="text-white text-base mb-4">{description}</p>
-      <button className="border-2 border-white text-white font-bold py-2 px-6 rounded-full hover:bg-white hover:text-black transition duration-300">
-        Book Now
-      </button>
+      <Link to="/home-user"><button className="border-2 border-white text-white font-bold py-2 px-6 rounded-full hover:bg-white hover:text-black transition duration-300">
+        Get Started
+      </button></Link>
     </div>
   );
 };
